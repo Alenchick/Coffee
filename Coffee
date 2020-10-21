@@ -1,0 +1,44 @@
+import random
+import math
+import os
+import time
+
+clear= lambda: os.system("clear")
+def menu():
+  print("Выбрите кофе")
+  lis = ["Латте","Капучино", "Раф","Эспрессо", "Американо", "Фраппе"]
+  price = [10,20,30,40,50,60]
+  i=0
+  print ("{0:1} - {1:12} - {2:4}".format("№","Название","Цена"))
+  while i<=5:
+    print("{0:2d} - {1:11} - {2:d} рублей".format(i+1,lis[i],price[i]))
+    i=i+1
+  a=int(input())
+  clear()
+  print("Заплатите {}".format(price[a-1]))
+  mon=int(input())
+  if mon<price[a-1]:
+    print("Недостаточно средств, доплатите {}".format(price[a-1]-mon))
+    input()
+  elif mon>price[a-1]:
+    print("Заберите сдачу {}".format(mon-price[a-1]))
+  print("Пожалуйста подождите, напиток готовится")
+  progress=""
+  for i in range(10):
+    time.sleep(1)
+    clear()
+    progress=progress+"-"
+  print("[",progress,"]")
+  time.sleep(3)
+  clear()
+  print("Готово")
+  time.sleep(3)
+  clear()
+  print("Будете ещё что-то заказывать ? Да-1,Нет-2")
+  A=int(input())
+  if A==1:
+    print("Сделайте заказ")
+    menu()
+  elif A==2:
+    print("До свидаяния")
+menu()
